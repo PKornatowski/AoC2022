@@ -21,10 +21,10 @@ for item in sample:
         #print(listakalori, "LISTA Z KALORIAMI")
         kalorie = 0
 #print(index(max(listakalori)))
-
+print(max(listakalori),"elve with most calories")
 listakalori.sort(reverse = True)
 suma = listakalori[0]+listakalori[1] + listakalori[2]
-print(suma)
+print(suma, "sum of 3 top elves")
 
 
 """
