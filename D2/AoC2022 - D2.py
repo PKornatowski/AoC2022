@@ -17,16 +17,40 @@ points = 0
 # Y - draw
 # Z - win
 translate_moves = {
-        "X":"rock",
-        "Y":"paper",
-        "Z":"scissors",
+        "X":"lose",
+        "Y":"draw",
+        "Z":"win",
         "A":"rock",
         "B":"paper",
         "C":"scissors"
         }
 
+moves = ["scissors", "rock", "paper"]
 
-
+def what_to_play(my_outcome, op_move):
+    if translate_moves[my_outcome] == "win":
+        index_number = (moves.index(translate_moves[op_move]) +1) %3
+        print("\n",index_number,"numer indeksu")
+        print(translate_moves[op_move], "jego ruch")
+        print(moves[index_number], "moj ruch")
+        print(translate_moves[my_outcome], "co ma byc")
+        return moves[index_number]
+    if translate_moves[my_outcome] == "draw":
+        index_number = moves.index(translate_moves[op_move])
+        print("\n",index_number,"numer indeksu")
+        print(translate_moves[op_move], "jego ruch")
+        print(moves[index_number], "moj ruch")
+        print(translate_moves[my_outcome], "co ma byc")
+        return moves[index_number]
+    if translate_moves[my_outcome] == "lose":
+        index_number = (moves.index(translate_moves[op_move]) -1) %3
+        print("\n",index_number,"numer indeksu")
+        print(translate_moves[op_move], "jego ruch")
+        print(moves[index_number], "moj ruch")
+        print(translate_moves[my_outcome], "co ma byc")
+        return moves[index_number]
+    print("YOU DUN GOOFED")
+"""
 def result(my_move, op_move):
     if translate_moves[my_move] == "rock" and translate_moves[op_move] == "scissors":
 #        print("win")
@@ -42,21 +66,30 @@ def result(my_move, op_move):
         return 3
 #    print("lose")
     return 0
+"""
 
-def move_points(my_move, op_move):
-    if translate_moves[my_move] == "rock":
+def move_points(my_move):
+    if my_move == "rock":
         return 1
-    if translate_moves[my_move] == "paper":
+    if my_move == "paper":
         return 2
-    if translate_moves[my_move] == "scissors":
+    if my_move == "scissors":
         return 3
 
+def round_points(my_outcome):
+    if translate_moves[my_outcome] == "win":
+        return 6
+    if translate_moves[my_outcome] == "draw":
+        return 3
+    if translate_moves[my_outcome] == "lose":
+        return 0
 
 for item in input:
     op_move=item[0]
-    my_move=item[2]
-#    print(my_move, "to jest moj ruch")
-    points +=  result(my_move, op_move) + move_points(my_move, op_move)
+    my_outcome=item[2]
+    my_move = what_to_play(my_outcome, op_move)
+    points += move_points(my_move) + round_points(my_outcome)
+    print(points, "curr points")
 print(points)
         
     
