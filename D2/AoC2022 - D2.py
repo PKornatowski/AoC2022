@@ -5,9 +5,7 @@ Created on Sat Dec  3 09:36:38 2022
 @author: Przemek
 """
 
-input = list(open("input.txt","r"))
 
-points = 0
 
 # A, X Rock = 1
 # B, Y Paper = 2
@@ -16,6 +14,8 @@ points = 0
 # X - lose
 # Y - draw
 # Z - win
+input = list(open("input.txt","r"))
+points = 0
 translate_moves = {
         "X":"lose",
         "Y":"draw",
@@ -24,49 +24,19 @@ translate_moves = {
         "B":"paper",
         "C":"scissors"
         }
-
 moves = ["scissors", "rock", "paper"]
 
 def what_to_play(my_outcome, op_move):
     if translate_moves[my_outcome] == "win":
         index_number = (moves.index(translate_moves[op_move]) +1) %3
-        print("\n",index_number,"numer indeksu")
-        print(translate_moves[op_move], "jego ruch")
-        print(moves[index_number], "moj ruch")
-        print(translate_moves[my_outcome], "co ma byc")
         return moves[index_number]
     if translate_moves[my_outcome] == "draw":
         index_number = moves.index(translate_moves[op_move])
-        print("\n",index_number,"numer indeksu")
-        print(translate_moves[op_move], "jego ruch")
-        print(moves[index_number], "moj ruch")
-        print(translate_moves[my_outcome], "co ma byc")
         return moves[index_number]
     if translate_moves[my_outcome] == "lose":
         index_number = (moves.index(translate_moves[op_move]) -1) %3
-        print("\n",index_number,"numer indeksu")
-        print(translate_moves[op_move], "jego ruch")
-        print(moves[index_number], "moj ruch")
-        print(translate_moves[my_outcome], "co ma byc")
         return moves[index_number]
-    print("YOU DUN GOOFED")
-"""
-def result(my_move, op_move):
-    if translate_moves[my_move] == "rock" and translate_moves[op_move] == "scissors":
-#        print("win")
-        return 6
-    if translate_moves[my_move] == "paper" and translate_moves[op_move] == "rock":
-#        print("win")
-        return 6
-    if translate_moves[my_move] == "scissors" and translate_moves[op_move] == "paper":
-#        print("win")
-        return 6
-    if translate_moves[my_move] == translate_moves[op_move]:
-#        print("draw")
-        return 3
-#    print("lose")
-    return 0
-"""
+
 
 def move_points(my_move):
     if my_move == "rock":
@@ -89,7 +59,25 @@ for item in input:
     my_outcome=item[2]
     my_move = what_to_play(my_outcome, op_move)
     points += move_points(my_move) + round_points(my_outcome)
-    print(points, "curr points")
 print(points)
+
+
+"""
+def result(my_move, op_move):
+    if translate_moves[my_move] == "rock" and translate_moves[op_move] == "scissors":
+#        print("win")
+        return 6
+    if translate_moves[my_move] == "paper" and translate_moves[op_move] == "rock":
+#        print("win")
+        return 6
+    if translate_moves[my_move] == "scissors" and translate_moves[op_move] == "paper":
+#        print("win")
+        return 6
+    if translate_moves[my_move] == translate_moves[op_move]:
+#        print("draw")
+        return 3
+#    print("lose")
+    return 0
+"""
         
     
