@@ -12,6 +12,10 @@ points = 0
 # A, X Rock = 1
 # B, Y Paper = 2
 # C, Z Scissors = 3
+# Part 2
+# X - lose
+# Y - draw
+# Z - win
 translate_moves = {
         "X":"rock",
         "Y":"paper",
@@ -25,18 +29,18 @@ translate_moves = {
 
 def result(my_move, op_move):
     if translate_moves[my_move] == "rock" and translate_moves[op_move] == "scissors":
-        print("win")
+#        print("win")
         return 6
     if translate_moves[my_move] == "paper" and translate_moves[op_move] == "rock":
-        print("win")
+#        print("win")
         return 6
     if translate_moves[my_move] == "scissors" and translate_moves[op_move] == "paper":
-        print("win")
+#        print("win")
         return 6
     if translate_moves[my_move] == translate_moves[op_move]:
-        print("draw")
+#        print("draw")
         return 3
-    print("lose")
+#    print("lose")
     return 0
 
 def move_points(my_move, op_move):
@@ -46,7 +50,6 @@ def move_points(my_move, op_move):
         return 2
     if translate_moves[my_move] == "scissors":
         return 3
-    print("YOU DON GOOFED")
 
 
 for item in input:
@@ -54,6 +57,6 @@ for item in input:
     my_move=item[2]
 #    print(my_move, "to jest moj ruch")
     points +=  result(my_move, op_move) + move_points(my_move, op_move)
-    print(points)
+print(points)
         
     
