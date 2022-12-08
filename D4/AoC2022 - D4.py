@@ -45,5 +45,5 @@ def any_overlap(frs, fre, srs, sre):
 
 for line in input:
      frs, fre, srs, sre = parse_text(line)
-#     overlaps += range_checks(frs, fre, srs, sre)
+#Part 1     overlaps += range_checks(frs, fre, srs, sre)
      overlaps += any_overlap(frs, fre, srs, sre)
